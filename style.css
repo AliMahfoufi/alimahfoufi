@@ -1,0 +1,254 @@
+/* ================== */
+/* Réinitialisation   */
+/* ================== */
+* {
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les paddings par défaut */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la taille totale */
+}
+
+/* ================== */
+/* Paramètres globaux */
+/* ================== */
+html, body {
+    height: 100%; /* Prend toute la hauteur de la fenêtre */
+    font-family: Arial, sans-serif; /* Utilise une police simple et lisible */
+    line-height: 1.6; /* Espace vertical entre les lignes pour la lisibilité */
+    background-color: #f5f5f5; /* Fond gris clair */
+    color: #333; /* Couleur du texte gris foncé (moins dur que le noir) */
+}
+
+/* ================== */
+/* Structure générale */
+/* ================== */
+body {
+    display: flex; /* Active Flexbox pour toute la page */
+    flex-direction: column; /* Empile les éléments verticalement */
+    min-height: 100vh; /* Prend au minimum toute la hauteur de la fenêtre */
+}
+
+.wrapper {
+    flex: 1; /* Permet au contenu principal de s’étirer entre header et footer */
+}
+
+header, footer {
+    background-color: #444; /* Fond gris foncé */
+    color: white; /* Texte en blanc */
+    text-align: center; /* Centrage du texte */
+    padding: 1.5rem; /* Espace intérieur autour du contenu */
+}
+
+footer {
+    padding: 1rem; /* Espace légèrement plus petit que le header */
+}
+
+/* ================== */
+/* Navigation         */
+/* ================== */
+nav {
+    margin-top: 1rem; /* Espace au-dessus de la barre de navigation */
+}
+
+nav ul {
+    list-style: none; /* Supprime les puces des listes */
+    display: flex; /* Affiche les éléments de menu horizontalement */
+    justify-content: center; /* Centre les éléments dans la barre */
+    gap: 20px; /* Espace entre chaque lien */
+    padding: 0; /* Supprime le padding par défaut */
+    margin: 0; /* Supprime la marge par défaut */
+}
+
+nav ul li a {
+    color: white; /* Texte des liens en blanc */
+    text-decoration: none; /* Supprime le soulignement */
+    font-weight: bold; /* Rend le texte plus visible */
+}
+
+nav ul li a:hover {
+    color: #ffcc00; /* Change la couleur au survol en jaune doux */
+    text-decoration: underline; /* Ajoute un soulignement au survol */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Transition fluide */
+}
+
+/* ================== */
+/* Contenu principal  */
+/* ================== */
+main.container {
+    padding: 1.5rem; /* Espace intérieur autour du contenu */
+    max-width: 900px; /* Largeur maximale du conteneur */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+    background-color: white; /* Fond blanc pour le contraste */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05); /* Ombre légère autour du bloc */
+}
+
+/* ================== */
+/* Images et galeries */
+/* ================== */
+.photo {
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 400px; /* Ne dépasse pas 400px */
+    height: auto; /* Garde les proportions */
+    object-fit: cover; /* Coupe ou remplit proprement sans déformation */
+    border-radius: 8px; /* Coins arrondis */
+    display: block; /* Affichage en bloc */
+    margin: 1rem auto; /* Centre l’image horizontalement et ajoute de l’espace vertical */
+}
+
+.album .galerie {
+    display: flex; /* Active Flexbox pour la galerie */
+    flex-wrap: wrap; /* Permet le retour à la ligne des images */
+    gap: 1rem; /* Espace entre les images */
+    justify-content: center; /* Centre la galerie horizontalement */
+}
+
+.album .galerie img {
+    width: 100%; /* Prend toute la largeur du conteneur */
+    max-width: 200px; /* Limite la taille maximale de l’image */
+    height: 200px; /* Hauteur fixe */
+    object-fit: cover; /* Coupe proprement l’image pour remplir le cadre */
+    display: block; /* Affiche comme un bloc */
+    margin: 1rem auto; /* Centre l’image et ajoute de l’espace */
+    border: 5px solid #ccc; /* Bordure grise */
+    border-radius: 12px; /* Coins arrondis */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Ombre portée légère */
+}
+
+/* ================== */
+/* Composants Lightbox */
+/* ================== */
+.lightbox {
+    display: none; /* Caché par défaut */
+    position: fixed; /* Positionne par-dessus tout */
+    z-index: 1000; /* Très au-dessus du reste du contenu */
+    padding-top: 60px; /* Espace au-dessus de l’image */
+    left: 0; top: 0; /* Coin supérieur gauche */
+    width: 100%; height: 100%; /* Prend tout l’écran */
+    overflow: auto; /* Ajoute un scroll si besoin */
+    background-color: rgba(0,0,0,0.8); /* Fond noir semi-transparent */
+}
+
+.lightbox-content {
+    margin: auto; /* Centre horizontalement */
+    display: block; /* Affichage en bloc */
+    max-width: 90%; /* Limite la taille pour ne pas déborder */
+    max-height: 90%; /* Même chose en hauteur */
+}
+
+.lightbox .close {
+    position: absolute; /* Position absolue dans le lightbox */
+    top: 10px; right: 20px; /* Coin supérieur droit */
+    color: white; /* Couleur blanche */
+    font-size: 30px; /* Taille de la croix */
+    font-weight: bold; /* Plus visible */
+    cursor: pointer; /* Curseur pointeur au survol */
+}
+
+/* ================== */
+/* Blocs de compétences */
+/* ================== */
+.skill-block {
+    background-color: #e8f0fe; /* Fond bleu clair par défaut */
+    padding: 1.5rem; /* Espace intérieur */
+    margin-bottom: 1.5rem; /* Espace entre les blocs */
+    border-left: 6px solid #4a90e2; /* Bord gauche coloré */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Ombre légère */
+    transition: background-color 0.3s ease; /* Transition douce */
+}
+
+.skill-block:hover {
+    transform: translateY(-4px); /* Légère élévation */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+    transition: all 0.3s ease; /* Transition générale */
+}
+
+/* Couleurs spécifiques à chaque bloc */
+.bloc-windows {
+    background-color: #e8f0fe; /* Bleu clair */
+    border-left-color: #4a90e2;
+}
+
+.bloc-reseau {
+    background-color: #fef7e0; /* Jaune pâle */
+    border-left-color: #f4b400;
+}
+
+.bloc-architecture {
+    background-color: #e6f4ea; /* Vert très clair */
+    border-left-color: #0f9d58;
+}
+
+.bloc-web {
+    background-color: #fce8e6; /* Rouge très clair */
+    border-left-color: #db4437;
+}
+
+.skill-block h2 {
+    margin-bottom: 0.5rem; /* Espace sous le titre */
+    color: #222; /* Couleur foncée */
+    font-size: 1.3rem; /* Taille moyenne */
+}
+
+.skill-block ul {
+    margin-top: 0.5rem; /* Espace au-dessus de la liste */
+    padding-left: 1.5rem; /* Retrait à gauche */
+}
+
+/* ================== */
+/* Mise en valeur     */
+/* ================== */
+.highlight {
+    font-size: 1.2rem; /* Texte un peu plus grand */
+    font-weight: bold; /* Texte gras */
+    color: #333; /* Couleur de texte foncée */
+    text-align: center; /* Centrage du texte */
+    margin: 1rem 0; /* Espace vertical */
+    background-color: #f0f0f0; /* Fond gris très clair */
+    padding: 0.75rem 1rem; /* Espace intérieur */
+    border-radius: 6px; /* Coins arrondis */
+}
+
+/* ================== */
+/* Responsive Design  */
+/* ================== */
+@media (max-width: 768px) {
+    header, footer {
+        padding: 1rem; /* Moins d’espace sur mobile */
+    }
+
+    nav ul {
+        flex-direction: column; /* Menu vertical */
+        align-items: center; /* Centre les éléments */
+        gap: 10px; /* Espace entre les liens */
+    }
+
+    nav {
+        flex-wrap: wrap; /* Permet le retour à la ligne */
+    }
+
+    nav a {
+        margin: 0.3rem 0.6rem; /* Espacement dans le menu */
+    }
+
+    main.container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .album .galerie img {
+        max-width: 100%; /* Images adaptables */
+        height: auto; /* Garde les proportions */
+    }
+
+    .skill-block {
+        padding: 1rem; /* Moins de padding sur mobile */
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem; /* Réduction de la taille du titre */
+        line-height: 1.2; /* Hauteur de ligne plus compacte */
+    }
+}
